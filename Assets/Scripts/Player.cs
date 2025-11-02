@@ -10,7 +10,10 @@ public class Player : Character, IShootable
 
     public float WaitTime { get; set; }
 
+    public int maxHealth = 100;
+    public int currentHealth;
 
+    public HealthBar healthBar;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
