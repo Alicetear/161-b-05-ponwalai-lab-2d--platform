@@ -34,5 +34,11 @@ public class Banana : Weapon
         Move();
     }
 
-    // Update is called once per frame
+
+    void Update()
+    {
+        Move();
+    }
+
+
 }

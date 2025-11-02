@@ -23,28 +23,29 @@ public class Player : Character, IShootable
 
     private void FixedUpdate()
     {
-        WaitTime = Time.fixedDeltaTime;
+        WaitTime += Time.fixedDeltaTime;
     }
 
-    public void OnHitWith(Enemy enemy)
-    {
-        TakeDamage(enemy.DamageHit);
-    }
+     void Update()
+     {
+        Shoot();
+     }
+
+
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
             //take damage
-            OnHitWith(enemy);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            Shoot();
-        }
+
+
     }
+
+
 
 
     public void Shoot()
@@ -56,23 +57,10 @@ public class Player : Character, IShootable
             if (banana != null)
                 banana.InitWeapon(20, this);
 
-            WaitTime = 0.0f;
+                WaitTime = 0.0f;
+
+
 
         }
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
 }
