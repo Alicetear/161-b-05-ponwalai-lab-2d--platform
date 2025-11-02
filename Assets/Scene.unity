@@ -4177,6 +4177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Crocodlie
   atkRange: 0
   player: {fileID: 0}
+  <Bullet>k__BackingField: {fileID: 115806, guid: 40466c5ac40024bbca1e4b144cdf43c2, type: 3}
+  <ShootPoint>k__BackingField: {fileID: 1792255246}
 --- !u!1001 &2080008567
 PrefabInstance:
   m_ObjectHideFlags: 0

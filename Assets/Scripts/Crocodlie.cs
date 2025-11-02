@@ -5,8 +5,8 @@ public class Crocodlie : Enemy, IShootable
     [SerializeField] float atkRange;
     public Player player;
 
-    public GameObject Bullet { get; set; }
-    public Transform ShootPoint { get; set; }
+    [field: SerializeField] public GameObject Bullet { get; set; }
+    [field: SerializeField] public Transform ShootPoint { get; set; }
     public float ReloadTime { get; set; }
     public float WaitTime { get; set; }
 
@@ -32,10 +32,6 @@ public class Crocodlie : Enemy, IShootable
         }
     }
 
-    public void Shoot()
-    {
-        Debug.Log($"{this.name} shoots rock to the {player.name}!");
-    }
 
     private void FixedUpdate()
     {
@@ -47,4 +43,23 @@ public class Crocodlie : Enemy, IShootable
     {
         Behavior();
     }
+
+    public void Shoot()
+    {
+        Debug.Log($"{this.name} shoots rock to the {player.name}!");
+        if (WaitTime >= ReloadTime)
+        {
+            anim.SetTrigger("Shoot");
+            var bullet = Instantiate(Bullet, ShootPoint.position, Quaternion.identity);
+            Rock rock = bullet.GetComponent<Rock>();
+            rock.InitWeapon(30, this);
+            WaitTime = 0f;
+        }
+    }
+
+
+
+
+
+
 }
