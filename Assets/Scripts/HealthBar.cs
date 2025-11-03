@@ -3,21 +3,30 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
+    [SerializeField] private Slider slider;
 
-    public void SetMaxHealth(float health)
+    void Awake()
     {
-        slider.maxValue = health;
-        slider.value = health;
+        if (slider == null) slider = GetComponentInChildren<Slider>(true);
+        // ??????????????????
+        if (slider != null)
+        {
+            slider.minValue = 0;
+            slider.wholeNumbers = true; 
+        }
     }
 
-    public void SetHealth(float health)
+    public void SetMaxHealth(int max)
     {
-        slider.value = health;
+        if (slider == null) return;
+        slider.minValue = 0;
+        slider.maxValue = max;
+        slider.value = max;  
     }
 
-    void Update()
+    public void SetHealth(int health)
     {
-        transform.LookAt(Camera.main.transform);
+        if (slider == null) return;
+        slider.value = Mathf.Clamp(health, 0, (int)slider.maxValue);
     }
 }

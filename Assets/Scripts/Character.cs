@@ -4,24 +4,44 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] protected int MaxHp = 100;
+
     private int health;
-    public int Health{
+    public int Health {
         get { return health; }
-        set { health = ( value < 0) ? 0 : value; }
+        set { health = (value < 0) ? 0 : value; }
     }
 
     protected Animator anim;
     protected Rigidbody2D rb;
+    protected HealthBar healthBar;
 
-    //initialize variable
+    protected virtual void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        healthBar = GetComponentInChildren<HealthBar>(true);
+    }
+
+
+    protected virtual void Start()
+    {
+        Intialize(MaxHp);
+    }
+
 
     public void Intialize(int startHealth)
     {
         Health = startHealth;
         Debug.Log($"{this.name} is initialed Health : {this.Health}");
-        
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(startHealth); 
+            healthBar.SetHealth(Health);
+        }
+
+
     }
     
 
@@ -29,6 +49,11 @@ public abstract class Character : MonoBehaviour
     {
         Health -= damage;
         Debug.Log($"{this.name} took damage {damage} Current Health : {Health} ");
+
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(Health);
+        }
 
         IsDead();
     }

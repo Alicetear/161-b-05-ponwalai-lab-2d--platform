@@ -11,9 +11,9 @@ public class Crocodlie : Enemy, IShootable
     public float WaitTime { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
-        base.Intialize(50);
+        base.Start();
         DamageHit = 30;
 
         atkRange = 6.0f;

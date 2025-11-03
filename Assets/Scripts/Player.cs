@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : Character, IShootable
+public  class Player : Character, IShootable
 {
     [field: SerializeField] public GameObject Bullet { get; set; }
 
@@ -13,13 +13,12 @@ public class Player : Character, IShootable
     public int maxHealth = 100;
     public int currentHealth;
 
-    public HealthBar healthBar;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
-        base.Intialize(100);
+        base.Start();
         ReloadTime = 1.0f;
         WaitTime = 0.0f;
     }

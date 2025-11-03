@@ -5,10 +5,9 @@ public class Ant : Enemy
     [SerializeField] Vector2 velocity;
     public Transform[] MovePoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
-        base.Intialize(20);
-
+        base.Start();
         DamageHit = 20;
         velocity = new Vector2(-1.0f , 0.0f);
     }
@@ -20,7 +19,7 @@ public class Ant : Enemy
         {
             Flip();
         }
-        //move right ?????????????
+        
         if (velocity.x > 0 && rb.position.x >= MovePoint[1].position.x)
         {
             Flip();
