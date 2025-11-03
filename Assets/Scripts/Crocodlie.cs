@@ -24,7 +24,14 @@ public class Crocodlie : Enemy, IShootable
     }
     public override void Behavior()
     {
+        if (player == null)
+        {
+            player = FindFirstObjectByType<Player>();
+            if (player == null) return; 
+        }
+
         Vector2 distance = transform.position - player.transform.position;
+
         if (distance.magnitude <= atkRange)
         {
             Debug.Log($"{player.name} is in the {this.name}'s atk range!");

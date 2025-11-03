@@ -15,7 +15,6 @@ public class Player : Character, IShootable
 
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
@@ -83,10 +82,10 @@ public class Player : Character, IShootable
         if (anim) anim.SetFloat("Speed", Mathf.Abs(inputX));
     }
 
-    private void Face(float dir)
+    private void Face(float o)
     {
         var s = transform.localScale;
-        s.x = Mathf.Abs(s.x) * Mathf.Sign(dir);   
+        s.x = Mathf.Abs(s.x) * Mathf.Sign(o);   
         transform.localScale = s;
     }
 
