@@ -12,9 +12,4 @@ public abstract class Enemy : Character
         base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

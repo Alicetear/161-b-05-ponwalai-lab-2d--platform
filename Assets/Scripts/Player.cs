@@ -11,6 +11,7 @@ public class Player : Character, IShootable
     public float WaitTime { get; set; }
 
     public int maxHealth = 100;
+    internal Vector2 position;
 
 
 

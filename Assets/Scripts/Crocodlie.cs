@@ -7,6 +7,7 @@ public class Crocodlie : Enemy, IShootable
 
     [field: SerializeField] public GameObject Bullet { get; set; }
     [field: SerializeField] public Transform ShootPoint { get; set; }
+
     public float ReloadTime { get; set; }
     public float WaitTime { get; set; }
 
@@ -41,6 +42,7 @@ public class Crocodlie : Enemy, IShootable
     void Update()
     {
         Behavior();
+
     }
 
     public void Shoot()
@@ -55,6 +57,23 @@ public class Crocodlie : Enemy, IShootable
             WaitTime = 0f;
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        var weapon = other.GetComponent<Weapon>();
+        if (weapon == null)
+        {
+            return;
+
+        }
+
+        TakeDamage(weapon.damage);
+        Destroy(other.gameObject);
+    }
+
+
 
 
 

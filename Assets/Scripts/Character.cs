@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -73,4 +74,5 @@ public abstract class Character : MonoBehaviour
     {
         
     }
+
 }
