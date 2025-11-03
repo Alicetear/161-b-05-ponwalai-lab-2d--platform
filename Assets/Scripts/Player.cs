@@ -1,13 +1,13 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Player : Character, IShootable
 {
     [field: SerializeField] public GameObject Bullet { get; set; }
-
     [field: SerializeField] public Transform ShootPoint { get; set; }
-
+    [SerializeField] private float moveSpeed = 5f;
+    private float inputX;
     public float ReloadTime { get; set; }
-
     public float WaitTime { get; set; }
 
     public int maxHealth = 100;
@@ -28,10 +28,6 @@ public class Player : Character, IShootable
         WaitTime += Time.fixedDeltaTime;
     }
 
-     void Update()
-     {
-        Shoot();
-     }
 
 
 
@@ -52,7 +48,7 @@ public class Player : Character, IShootable
 
     public void Shoot()
     {
-        if (Input.GetButtonDown("Fire1") && WaitTime >= ReloadTime)
+        if (UnityEngine.Input.GetButtonDown("Fire1") && WaitTime >= ReloadTime)
         {
             var bullet = Instantiate(Bullet, ShootPoint.position, Quaternion.identity);
             Banana banana = bullet.GetComponent<Banana>();
@@ -65,4 +61,42 @@ public class Player : Character, IShootable
 
         }
     }
+
+
+    private void Flip(float direction)
+    {
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction);
+        transform.localScale = scale;
+    }
+
+
+
+    public override void Behavior()
+    {
+        inputX = UnityEngine.Input.GetAxisRaw("Horizontal");
+
+        rb.linearVelocity = new Vector2(inputX * moveSpeed, rb.linearVelocity.y);
+
+        if (inputX != 0) Face(inputX);
+
+        if (anim) anim.SetFloat("Speed", Mathf.Abs(inputX));
+    }
+
+    private void Face(float dir)
+    {
+        var s = transform.localScale;
+        s.x = Mathf.Abs(s.x) * Mathf.Sign(dir);   
+        transform.localScale = s;
+    }
+
+    private void Update()
+    {
+        Shoot();
+        Behavior();
+    }
+
+
+
+
 }

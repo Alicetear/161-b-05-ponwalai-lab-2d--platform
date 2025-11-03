@@ -20,7 +20,7 @@ public class Crocodlie : Enemy, IShootable
         atkRange = 6.0f;
         player = GameObject.FindFirstObjectByType<Player>();
         WaitTime = 0;
-        ReloadTime = 5f;
+        ReloadTime = 2f;
     }
     public override void Behavior()
     {

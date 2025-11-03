@@ -6,6 +6,7 @@ public abstract class Character : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] protected int maxHp = 100;
+    public abstract void Behavior();
 
     private int health;
     public int Health {

@@ -4858,7 +4858,7 @@ Transform:
   m_GameObject: {fileID: 1792255245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.93, y: 0, z: 0}
+  m_LocalPosition: {x: -1.89, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4878,11 +4878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448308, guid: c07db661138134f589f46b8510d57c9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.04
+      value: 4.69
       objectReference: {fileID: 0}
     - target: {fileID: 448308, guid: c07db661138134f589f46b8510d57c9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: 448308, guid: c07db661138134f589f46b8510d57c9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5965,6 +5965,7 @@ MonoBehaviour:
   maxHp: 100
   <Bullet>k__BackingField: {fileID: 182108, guid: a5638a192258f4059b0e074542d33fbc, type: 3}
   <ShootPoint>k__BackingField: {fileID: 1190580341}
+  moveSpeed: 5
   maxHealth: 100
 --- !u!114 &2099630150
 MonoBehaviour:
