@@ -7,8 +7,11 @@ public class HealthBar : MonoBehaviour
 
     void Awake()
     {
-        if (slider == null) slider = GetComponentInChildren<Slider>(true);
-        // ??????????????????
+        if (slider == null) 
+        {
+           slider = GetComponentInChildren<Slider>(true);
+        } 
+
         if (slider != null)
         {
             slider.minValue = 0;

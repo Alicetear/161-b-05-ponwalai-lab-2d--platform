@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Ant : Enemy
+public class Ant :  Enemy
 {
     [SerializeField] Vector2 velocity;
-    public Transform[] MovePoint;
+    [SerializeField] Transform[] MovePoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -29,8 +29,8 @@ public class Ant : Enemy
 
     void Flip()
     {
-        velocity.x *= -1; //change direction of movement
-                          //Flip the image
+        velocity.x *= -1; 
+                          
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;

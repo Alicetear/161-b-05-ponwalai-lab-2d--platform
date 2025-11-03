@@ -14,11 +14,10 @@ public class Crocodlie : Enemy, IShootable
     protected override void Start()
     {
         base.Start();
-        DamageHit = 30;
 
+        DamageHit = 30;
         atkRange = 6.0f;
         player = GameObject.FindFirstObjectByType<Player>();
-
         WaitTime = 0;
         ReloadTime = 5f;
     }

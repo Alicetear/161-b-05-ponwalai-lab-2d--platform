@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] protected int MaxHp = 100;
+    [SerializeField] protected int maxHp = 100;
 
     private int health;
     public int Health {
@@ -26,7 +26,7 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void Start()
     {
-        Intialize(MaxHp);
+        Intialize(maxHp);
     }
 
 

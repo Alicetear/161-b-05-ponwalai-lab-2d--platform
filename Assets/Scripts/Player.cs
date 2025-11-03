@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public  class Player : Character, IShootable
+public class Player : Character, IShootable
 {
     [field: SerializeField] public GameObject Bullet { get; set; }
 
@@ -11,7 +11,6 @@ public  class Player : Character, IShootable
     public float WaitTime { get; set; }
 
     public int maxHealth = 100;
-    public int currentHealth;
 
 
 
